@@ -54,7 +54,7 @@ void calculeazaNumarulMaximDePatrateAlbePeUnRand()
 	{
 		int nr = 0;
 		for (int j = 1; j <= i; j++)
-			if (tabla[i][j] == VALOARE_PATRAT_ACCESIBIL)
+			if (tabla[i][j] != VALOARE_PATRAT_INACCESIBIL)
 				nr++;
 		if (nr > nrMaximPatrateAlbe)
 			nrMaximPatrateAlbe = nr;
