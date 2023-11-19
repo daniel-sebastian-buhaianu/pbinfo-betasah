@@ -28,16 +28,20 @@ int main()
 }
 void calculeazaNumarulDePatrateAccesibile()
 {
-	int valoareMarcaj = VALOARE_PATRAT_DAMA + 1;
 	for (int i = 0; i < nrDame; i++)
-		for (int d = 0; d < NR_DIRECTII; d++)
+		for (int k = 0; k < NR_DIRECTII; k++)
 		{
-			int linie = pozitieDama[i].nrLinie + directieLinie[d];
-			int coloana = pozitieDama[i].nrColoana + directieColoana[d];
-			if (tabla[linie][coloana] == VALOARE_PATRAT_ACCESIBIL)
-				tabla[linie][coloana] = valoareMarcaj++;
+			Pozitie p;
+			p.nrLinie = pozitieDama[i].nrLinie + directieLinie[k];
+			p.nrColoana = pozitieDama[i].nrColoana + directieColoana[k];
+			while (tabla[p.nrLinie][p.nrColoana] == VALOARE_PATRAT_ACCESIBIL)
+			{
+				nrPatrateAccesibile++;
+				tabla[p.nrLinie][p.nrColoana] = nrPatrateAccesibile+1;
+				p.nrLinie += directieLinie[k];
+				p.nrColoana += directieColoana[k];
+			}
 		}
-	nrPatrateAccesibile = valoareMarcaj - 2;	
 }
 void calculeazaNumarulMaximDePatrateAlbePeUnRand()
 {
