@@ -34,10 +34,14 @@ void calculeazaNumarulDePatrateAccesibile()
 			Pozitie p;
 			p.nrLinie = pozitieDama[i].nrLinie + directieLinie[k];
 			p.nrColoana = pozitieDama[i].nrColoana + directieColoana[k];
-			while (tabla[p.nrLinie][p.nrColoana] == VALOARE_PATRAT_ACCESIBIL)
+			while (tabla[p.nrLinie][p.nrColoana] != VALOARE_PATRAT_DAMA
+			       && tabla[p.nrLinie][p.nrColoana] != VALOARE_PATRAT_INACCESIBIL)
 			{
-				nrPatrateAccesibile++;
-				tabla[p.nrLinie][p.nrColoana] = nrPatrateAccesibile+1;
+				if (tabla[p.nrLinie][p.nrColoana] == VALOARE_PATRAT_ACCESIBIL)
+				{
+					nrPatrateAccesibile++;
+					tabla[p.nrLinie][p.nrColoana] = nrPatrateAccesibile+1;
+				}
 				p.nrLinie += directieLinie[k];
 				p.nrColoana += directieColoana[k];
 			}
